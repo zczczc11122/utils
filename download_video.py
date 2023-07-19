@@ -23,7 +23,7 @@ def Download(video_id, url):
         video_path = os.path.abspath(video_id + ".{}".format(video_type))
         r = requests.get(url, stream=True)
         with open(video_path, "wb") as file:
-            for chunk in r.iter_content(chunk_size=2048)
+            for chunk in r.iter_content(chunk_size=2048):
                 if chunk:
                     file.write(chunk)
         logger.info("download video success {} {}, path is {}".format(video_id, url, video_path))
